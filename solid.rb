@@ -36,7 +36,7 @@ end
 # Liskov substitution
 # -------------------
 # the sub class must be able to replace the parent class
-# Why - Multiple clients that call these classes can consistently assume what methods are defined. See this answer: https://softwareengineering.stackexchange.com/a/170229
+# Why - Multiple clients that call these classes can consistently assume what methods are defined and return the same datatype. See this answer: https://softwareengineering.stackexchange.com/a/170229
 
 class Parent
   def speak
@@ -46,7 +46,12 @@ end
 
 # Bad
 class Child < Parent
-  def walk # Undefined method 'speak' for this class. Expected: able to call .speak
+  # Bad: Returns a datatype that is different from parent.
+  def speak
+    5
+  end
+
+  def walk
     "walking"
   end
 end
@@ -61,7 +66,7 @@ end
 # Interface segregation
 # ---------------------
 # An interface must be wholly used by its client.
-# In other words, there cannot be parts of the interface that are exclusively relevant to Client A, and some exclusive relevant to Client B.
+# In other words, there cannot be parts of the interface that are exclusively relevant to Client A, and some exclusively relevant to Client B.
 # "Clients should not be forced to depend upon interfaces that they don't use."
 #   Source: http://rubyblog.pro/2017/07/solid-interface-segregation-principle
 # Why - Same reason for Single Responsibility Principle. Modifying the processing for Client A could adversely impact the service provided for Client B.
@@ -94,7 +99,7 @@ end
 # Dependency inversion principle
 # ------------------------------
 # Depend on abstractions instead of details
-# Why - Abstractions change less often than concrete classes. EG: Our users may want us to change the data structure of an Amazon order, but the model the order will never change.
+# Why - Abstractions change less often than concrete classes. EG: Our users may want us to change the rendered data of an Amazon order, but the model of the order will never change.
 
 # Bad
 class UserModel
