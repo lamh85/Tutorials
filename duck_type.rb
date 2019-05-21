@@ -45,3 +45,23 @@ end
 # Sub-model
 class ExtensionType < PlanType
 end
+
+# The interface class doesn't have to be concrete. It can be abstract. It's more important to have a useful interface than a concrete object. EG:
+PlanType # Not concrete, but is a duck type
+MembershipType # Is concrete, but its interface is duplicated in ExtensionType
+ExtensionType # Is concrete, but its interface is duplicated in MembershipType
+
+
+# Reasonable exception: the depended classes are stable. EG:
+class Customer
+  def purchase(some_argument)
+    argument_class = some_argument.class
+    case argument_class
+    # These classes will rarely change their interface. IE: deprecation
+    when String
+      some_argument.gsub(" ", "-")
+    when Integer
+      some_argument.to_s
+    end
+  end
+end
