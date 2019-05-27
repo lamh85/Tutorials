@@ -82,3 +82,36 @@ end
 
 # BIG TAKEAWAY: `super` is always a dependency
 
+# How to avoid using `super` in initialize:
+class Organism
+  def initialize
+  end
+end
+class Human < Organism
+  def post_initialize
+    # everything executed here occures after Organism#initialize
+  end
+end
+
+# How to avoid depending on the superclass' method:
+
+class Organism
+  def base_list
+    {
+      some_key: "some_value",
+      **enlarged_list
+    }
+  end
+
+  def enlarged_list
+    {}
+  end
+end
+class Human < Organism
+  def enlarged_list
+    {
+      another_key: "another_value"
+    }
+  end
+end
+
