@@ -105,7 +105,7 @@ puts policy.check_access(ProfileController, user)
 
 ## Statements
 ```ruby
-# Square Brackets is a Method
+# Square brackets is a method
 hash = { hello: "world" }
 hash.try([], :hello)
 ```
