@@ -30,7 +30,6 @@ function withHover(Component) {
   }
 }
 ```
-
 # Statements
 ```javascript
 var hello
