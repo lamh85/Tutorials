@@ -31,10 +31,10 @@ function withHover(Component) {
 }
 ```
 # Statements
+## Can Add Properties to Functions (proving that functions are objects)
 ```javascript
-var hello
-{
-  hello: 'world',
-  foo: 'bar', // another comment
-}
+// We can add properties to functions like we do with objects
+greeting.lang = 'English';
+// Prints 'English'
+console.log(greeting.lang);
 ```
