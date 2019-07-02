@@ -38,3 +38,12 @@ greeting.lang = 'English';
 // Prints 'English'
 console.log(greeting.lang);
 ```
+## Flatten a two dimensional array
+```javascript
+// .concat is used for merging multiple arrays. Each argument is an array:
+[].concat([1,2,3], [4,5,6])
+
+// Therefore, can be used to flatten an array via spread operator
+const 2DArray = [['set one'], ['set two']]
+const flattened = [].concat(..2DArray)
+```
