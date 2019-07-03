@@ -102,8 +102,19 @@ puts policy.check_access(ProfileController, user)
 ```
 
 # Statements
+## Square brakcets is a method
 ```ruby
-# Square brackets is a method
 hash = { hello: "world" }
 hash.try([], :hello)
+```
+## Delegate missing methods
+```ruby
+class Person
+  def first_name
+  end
+
+  def method_missing(method_name, *args, &block)
+    # What to do if the requester calls an undefined method of Person.
+  end
+end
 ```
