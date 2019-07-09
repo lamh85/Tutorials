@@ -1,37 +1,29 @@
 # Patterns
 
-## Self Instantiation
-
+## Hooks
 ```ruby
-class Api
-  def self.run(args)
-    new(args).real_run
+class Ancestor
+  def total
+    [ *items, *local_items ]
   end
 
-  def initialize(args)
-  end
-
-  def real_run
+  def items
+    [ 'the og' ]
   end
 end
 
-Api.run(some_args)
+class Descendant < Ancestor
+  def local_items
+    [ 'another thing' ]
+  end
+  
+  # Therefore, can call `total` to get the class' and superclass' list.
+end
 
-# RSpec Yield
-# -----------
-# https://relishapp.com/rspec/rspec-mocks/v/3-8/docs/configuring-responses/yielding
-
-RSpec.describe "Making it yield arguments" do
-  it "yields the provided args" do
-    dbl = double
-    # and_yield replaces the real arguments with custom arguments when the stubbed method is called.
-    # EG: When method `foo` is called, ensure that arguments 2,3 become the arguments.
-    allow(dbl).to receive(:foo).and_yield(2, 3)
-
-    x = y = nil
-    dbl.foo { |a, b| x, y = a, b }
-    expect(x).to eq(2)
-    expect(y).to eq(3)
+class SubDescendant < Descendant
+  # Not good because need to call `super`, which is a sign of dependency.
+  def local_items
+    [ *super, 'another another thing' ]
   end
 end
 ```
@@ -99,6 +91,42 @@ policy = LogsControllerPolicy.new(
 )
 
 puts policy.check_access(ProfileController, user)
+```
+
+## Self Instantiation
+
+```ruby
+class Api
+  def self.run(args)
+    new(args).real_run
+  end
+
+  def initialize(args)
+  end
+
+  def real_run
+  end
+end
+
+Api.run(some_args)
+
+# RSpec Yield
+# -----------
+# https://relishapp.com/rspec/rspec-mocks/v/3-8/docs/configuring-responses/yielding
+
+RSpec.describe "Making it yield arguments" do
+  it "yields the provided args" do
+    dbl = double
+    # and_yield replaces the real arguments with custom arguments when the stubbed method is called.
+    # EG: When method `foo` is called, ensure that arguments 2,3 become the arguments.
+    allow(dbl).to receive(:foo).and_yield(2, 3)
+
+    x = y = nil
+    dbl.foo { |a, b| x, y = a, b }
+    expect(x).to eq(2)
+    expect(y).to eq(3)
+  end
+end
 ```
 
 # Statements
