@@ -1,5 +1,40 @@
 # Patterns
+## Composition with Duck Typing
+```ruby
+class Hobby
+  attr_reader :name
+  
+  def initialize(name:)
+    @name = name
+  end
+end
 
+class Exercise < Hobby
+end
+
+class DrugHobby < Hobby
+end
+
+# A Hobbies has many Hobby
+class Hobbies
+  def initialize(hobbies)
+    @hobbies = hobbies
+  end
+end
+
+# A Person has one Hobbies
+class Person
+  def initialize(name:, hobbies:)
+    @name = name
+    @hobbies = hobbies
+  end
+end
+
+lift_weights = Exercise.new(name: 'lift weights')
+smoke = DrugHobby.new(name: 'smoke')
+strange_hobbies = Hobbiew.new([lift_weights, smoke])
+some_guy = Person(name: 'John Doe', hobbies: strange_hobbies)
+```
 ## Hooks
 ```ruby
 class Ancestor
