@@ -1,4 +1,58 @@
 # Patterns
+http://www.railstips.org/blog/archives/2009/05/15/include-vs-extend-in-ruby/
+## Include vs Extend
+```ruby
+module IncludeMe
+  def call_include
+    puts 'I am from IncludeMe'
+  end
+end
+
+module ExtendMe
+  def call_extend
+    puts 'I am from ExtendMe'
+  end
+end
+
+class Parent
+  # Module's methods are imported as instance methods
+  include IncludeMe
+
+  # Module's methods are imported as class methods
+  extend ExtendMe
+end
+
+class Child < Parent
+end
+```
+## Hooks
+```ruby
+class Ancestor
+  def total
+    [ *items, *local_items ]
+  end
+
+  def items
+    [ 'the og' ]
+  end
+end
+
+class Descendant < Ancestor
+  def local_items
+    [ 'another thing' ]
+  end
+  
+  # Therefore, can call `total` to get the class' and superclass' list.
+end
+
+class SubDescendant < Descendant
+  # Not good because need to call `super`, which is a sign of dependency.
+  def local_items
+    [ *super, 'another another thing' ]
+  end
+end
+```
+
 ## Composition with Duck Typing
 ```ruby
 class Hobby
@@ -35,30 +89,38 @@ smoke = DrugHobby.new(name: 'smoke')
 strange_hobbies = Hobbiew.new([lift_weights, smoke])
 some_guy = Person(name: 'John Doe', hobbies: strange_hobbies)
 ```
-## Hooks
+## Self Instantiation
+
 ```ruby
-class Ancestor
-  def total
-    [ *items, *local_items ]
+class Api
+  def self.run(args)
+    new(args).real_run
   end
 
-  def items
-    [ 'the og' ]
+  def initialize(args)
+  end
+
+  def real_run
   end
 end
 
-class Descendant < Ancestor
-  def local_items
-    [ 'another thing' ]
-  end
-  
-  # Therefore, can call `total` to get the class' and superclass' list.
-end
+Api.run(some_args)
 
-class SubDescendant < Descendant
-  # Not good because need to call `super`, which is a sign of dependency.
-  def local_items
-    [ *super, 'another another thing' ]
+# RSpec Yield
+# -----------
+# https://relishapp.com/rspec/rspec-mocks/v/3-8/docs/configuring-responses/yielding
+
+RSpec.describe "Making it yield arguments" do
+  it "yields the provided args" do
+    dbl = double
+    # and_yield replaces the real arguments with custom arguments when the stubbed method is called.
+    # EG: When method `foo` is called, ensure that arguments 2,3 become the arguments.
+    allow(dbl).to receive(:foo).and_yield(2, 3)
+
+    x = y = nil
+    dbl.foo { |a, b| x, y = a, b }
+    expect(x).to eq(2)
+    expect(y).to eq(3)
   end
 end
 ```
@@ -128,41 +190,6 @@ policy = LogsControllerPolicy.new(
 puts policy.check_access(ProfileController, user)
 ```
 
-## Self Instantiation
-
-```ruby
-class Api
-  def self.run(args)
-    new(args).real_run
-  end
-
-  def initialize(args)
-  end
-
-  def real_run
-  end
-end
-
-Api.run(some_args)
-
-# RSpec Yield
-# -----------
-# https://relishapp.com/rspec/rspec-mocks/v/3-8/docs/configuring-responses/yielding
-
-RSpec.describe "Making it yield arguments" do
-  it "yields the provided args" do
-    dbl = double
-    # and_yield replaces the real arguments with custom arguments when the stubbed method is called.
-    # EG: When method `foo` is called, ensure that arguments 2,3 become the arguments.
-    allow(dbl).to receive(:foo).and_yield(2, 3)
-
-    x = y = nil
-    dbl.foo { |a, b| x, y = a, b }
-    expect(x).to eq(2)
-    expect(y).to eq(3)
-  end
-end
-```
 
 # Statements
 ## Square brakcets is a method

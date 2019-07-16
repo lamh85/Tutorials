@@ -1,4 +1,23 @@
 # Patterns
+## Tag Template
+https://codeburst.io/javascript-template-literals-tag-functions-for-beginners-758a041160e1
+```javascript
+const argument1 = 'argument1'
+const argument2 = 'argument2'
+
+const template = (...parts) => {
+  // Returns an array of string literals:
+  // [ 'Here is argument 1: ', '. Here is argument 2: ', '' ]
+  console.log(parts[0])
+
+  // Returns the variables to be interpolated:
+  // [ 'argument1', 'argument2' ]
+  console.log(parts.slice(1, parts.length))
+}
+
+template`Here is argument 1: ${argument1}. Here is argument 2: ${argument2}`
+```
+
 ## Higher Order Function
 ```javascript
 const firstResponder = emergency => {
