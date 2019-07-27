@@ -1,5 +1,49 @@
 # Patterns
 
+**Main characteristic of this pattern -** The superclass only calls the output. It has no other method.
+
+**Why do this?**
+* Prefer composition over inheritance.
+* Fewer methods in the super class facilitates:
+  * Open/Closed Principle.
+  * Liskov Substitution Principle.
+
+## Strategy
+```ruby
+class Cat
+  def initialize(breed)
+    @breed = breed
+    @emotion = "something that came from Cat class"
+  end
+
+  # The superclass only contains the interface,
+  # and not the computation of the output
+  def meow
+    @breed.meow(@emotion)
+  end
+end
+
+class MaineCoon < Cat
+  def meow(emotion)
+    # given @emotion, create the output
+  end
+
+  # More methods
+end
+
+class ScottishFold < Cat
+  def meow(emotion)
+    # given @emotion, create the output
+  end
+
+  # More methods
+end
+
+# The "context": the act of calling the strategy's superclass
+mc = MaineCoon.new
+mc.meow
+```
+
 ## Include vs Extend
 http://www.railstips.org/blog/archives/2009/05/15/include-vs-extend-in-ruby/
 ```ruby
@@ -55,37 +99,7 @@ class SubDescendant < Descendant
 end
 ```
 
-## Strategy
-```ruby
-class Cat
-  def initialize(breed)
-    @breed = breed
-    @emotion = "something that came from Cat class"
-  end
 
-  # The superclass only contains the interface,
-  # and not the computation of the output
-  def meow
-    @breed.meow(@emotion)
-  end
-end
-
-class MaineCoon < Cat
-  def meow(emotion)
-    # given @emotion, create the output
-  end
-end
-
-class ScottishFold < Cat
-  def meow(emotion)
-    # given @emotion, create the output
-  end
-end
-
-# The "context": the act of calling the strategy's superclass
-mc = MaineCoon.new
-mc.meow
-```
 ## Composition with Duck Typing
 ```ruby
 class Hobby
