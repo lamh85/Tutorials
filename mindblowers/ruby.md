@@ -56,7 +56,8 @@ class Descendant < Ancestor
 end
 
 class SubDescendant < Descendant
-  # Not good because need to call `super`, which is a sign of dependency.
+  # Not good because need to call `super`, which is a sign of dependency:
+  # It knows that some array items exist in the super class, therefore call `super`
   def local_items
     [ *super, 'another another thing' ]
   end
