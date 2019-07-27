@@ -1,4 +1,5 @@
 # Patterns
+<<<<<<< HEAD
 http://www.railstips.org/blog/archives/2009/05/15/include-vs-extend-in-ruby/
 ## Include vs Extend
 ```ruby
@@ -53,6 +54,39 @@ class SubDescendant < Descendant
 end
 ```
 
+=======
+## Strategy
+```ruby
+class Cat
+  def initialize(breed)
+    @breed = breed
+    @emotion = "something that came from Cat class"
+  end
+
+  # The superclass only contains the interface,
+  # and not the computation of the output
+  def meow
+    @breed.meow(@emotion)
+  end
+end
+
+class MaineCoon < Cat
+  def meow(emotion)
+    # given @emotion, create the output
+  end
+end
+
+class ScottishFold < Cat
+  def meow(emotion)
+    # given @emotion, create the output
+  end
+end
+
+# The "context": the act of calling the strategy's superclass
+mc = MaineCoon.new
+mc.meow
+```
+>>>>>>> 7e53bb2e55e3ad3268f735679916bf3d6d2ac085
 ## Composition with Duck Typing
 ```ruby
 class Hobby
@@ -104,6 +138,7 @@ class Api
   end
 end
 
+<<<<<<< HEAD
 Api.run(some_args)
 
 # RSpec Yield
@@ -121,6 +156,13 @@ RSpec.describe "Making it yield arguments" do
     dbl.foo { |a, b| x, y = a, b }
     expect(x).to eq(2)
     expect(y).to eq(3)
+=======
+class SubDescendant < Descendant
+  # Not good because need to call `super`, which is a sign of dependency:
+  # It knows that some array items exist in the super class, therefore call `super`
+  def local_items
+    [ *super, 'another another thing' ]
+>>>>>>> 7e53bb2e55e3ad3268f735679916bf3d6d2ac085
   end
 end
 ```
@@ -192,6 +234,21 @@ puts policy.check_access(ProfileController, user)
 
 
 # Statements
+## Use conditional assignment instead of conditional
+```ruby
+first_resort = {}
+next_resort = {something: 'value'}
+
+# All of the following produce the same result
+
+result = first_resort[:something]
+result ||= next_resort[:something]
+
+result = next_resort[:something]
+result = first_resort[:something] if first_resort[:something]
+
+result = first_resort[:something] || next_resort[:something]
+```
 ## Square brakcets is a method
 ```ruby
 hash = { hello: "world" }
