@@ -1,4 +1,35 @@
 # Patterns
+## Strategy
+```ruby
+class Cat
+  def initialize(breed)
+    @breed = breed
+    @emotion = "something that came from Cat class"
+  end
+
+  # The superclass only contains the interface,
+  # and not the computation of the output
+  def meow
+    @breed.meow(@emotion)
+  end
+end
+
+class MaineCoon < Cat
+  def meow(emotion)
+    # given @emotion, create the output
+  end
+end
+
+class ScottishFold < Cat
+  def meow(emotion)
+    # given @emotion, create the output
+  end
+end
+
+# The "context": the act of calling the strategy's superclass
+mc = MaineCoon.new
+mc.meow
+```
 ## Composition with Duck Typing
 ```ruby
 class Hobby
@@ -166,6 +197,21 @@ end
 ```
 
 # Statements
+## Use conditional assignment instead of conditional
+```ruby
+first_resort = {}
+next_resort = {something: 'value'}
+
+# All of the following produce the same result
+
+result = first_resort[:something]
+result ||= next_resort[:something]
+
+result = next_resort[:something]
+result = first_resort[:something] if first_resort[:something]
+
+result = first_resort[:something] || next_resort[:something]
+```
 ## Square brakcets is a method
 ```ruby
 hash = { hello: "world" }
