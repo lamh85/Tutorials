@@ -1,7 +1,7 @@
 # Patterns
-<<<<<<< HEAD
-http://www.railstips.org/blog/archives/2009/05/15/include-vs-extend-in-ruby/
+
 ## Include vs Extend
+http://www.railstips.org/blog/archives/2009/05/15/include-vs-extend-in-ruby/
 ```ruby
 module IncludeMe
   def call_include
@@ -47,14 +47,14 @@ class Descendant < Ancestor
 end
 
 class SubDescendant < Descendant
-  # Not good because need to call `super`, which is a sign of dependency.
+  # Not good because need to call `super`, which is a sign of dependency:
+  # It knows that some array items exist in the super class, therefore call `super`
   def local_items
     [ *super, 'another another thing' ]
   end
 end
 ```
 
-=======
 ## Strategy
 ```ruby
 class Cat
@@ -86,7 +86,6 @@ end
 mc = MaineCoon.new
 mc.meow
 ```
->>>>>>> 7e53bb2e55e3ad3268f735679916bf3d6d2ac085
 ## Composition with Duck Typing
 ```ruby
 class Hobby
@@ -123,6 +122,8 @@ smoke = DrugHobby.new(name: 'smoke')
 strange_hobbies = Hobbiew.new([lift_weights, smoke])
 some_guy = Person(name: 'John Doe', hobbies: strange_hobbies)
 ```
+
+
 ## Self Instantiation
 
 ```ruby
@@ -138,13 +139,10 @@ class Api
   end
 end
 
-<<<<<<< HEAD
 Api.run(some_args)
+```
 
-# RSpec Yield
-# -----------
-# https://relishapp.com/rspec/rspec-mocks/v/3-8/docs/configuring-responses/yielding
-
+```
 RSpec.describe "Making it yield arguments" do
   it "yields the provided args" do
     dbl = double
@@ -156,16 +154,10 @@ RSpec.describe "Making it yield arguments" do
     dbl.foo { |a, b| x, y = a, b }
     expect(x).to eq(2)
     expect(y).to eq(3)
-=======
-class SubDescendant < Descendant
-  # Not good because need to call `super`, which is a sign of dependency:
-  # It knows that some array items exist in the super class, therefore call `super`
-  def local_items
-    [ *super, 'another another thing' ]
->>>>>>> 7e53bb2e55e3ad3268f735679916bf3d6d2ac085
   end
 end
 ```
+
 
 ## Chain of Responsibility
 https://medium.com/kkempin/chain-of-responsibility-design-pattern-in-ruby-e0b756d4bb3b
