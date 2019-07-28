@@ -1,6 +1,6 @@
 # Patterns
 
-**Main characteristic of this pattern -** The superclass only calls the output. It has no other method.
+**Main characteristic:** The superclass only calls the output. It has no other method.
 
 **Why do this?**
 * Prefer composition over inheritance.
@@ -8,8 +8,10 @@
   * Open/Closed Principle.
   * Liskov Substitution Principle.
 
-## Strategy
+## Strategy Pattern
 ```ruby
+
+# The strategy class
 class Cat
   def initialize(breed)
     @breed = breed
@@ -21,6 +23,8 @@ class Cat
   def meow
     @breed.meow(@emotion)
   end
+
+  # NO OTHER method
 end
 
 class MaineCoon < Cat
@@ -29,6 +33,8 @@ class MaineCoon < Cat
   end
 
   # More methods
+  # More methods
+  # More methods
 end
 
 class ScottishFold < Cat
@@ -36,6 +42,8 @@ class ScottishFold < Cat
     # given @emotion, create the output
   end
 
+  # More methods
+  # More methods
   # More methods
 end
 
