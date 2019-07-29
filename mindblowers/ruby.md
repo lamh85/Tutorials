@@ -27,6 +27,7 @@ class Cat
   # NO OTHER method
 end
 
+# A strategy option
 class MaineCoon < Cat
   def meow(emotion)
     # given @emotion, create the output
@@ -50,6 +51,32 @@ end
 # The "context": the act of calling the strategy's superclass
 mc = MaineCoon.new
 mc.meow
+```
+
+## Substitute Strategy Option with a Proc
+
+This is only effective if the strategy object can fit inside one method. If so, then store it in side a proc.
+
+```ruby
+class Report
+  def initialize(&config)
+    @config = config
+    @title = 'I am a title'
+    @body = 'I am a body'
+  end
+
+  def render
+    config.call(self)
+  end
+end
+
+# A strategy option
+# The 'context' argument is the 'self' in config.call(self)
+some_format = lambda do |context|
+  puts context.title
+  puts '============'
+  puts context.body
+end
 ```
 
 ## Include vs Extend
