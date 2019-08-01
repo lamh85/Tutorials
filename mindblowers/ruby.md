@@ -1,5 +1,14 @@
 # Patterns
 
+## Observer
+
+**Main characteristics:**
+* The subject (the observed) just emits events. But doesn't care who the observers are.
+* The observer handles the received events.
+* The subject has methods for adding more observers.
+
+## Strategy Pattern
+
 **Main characteristic:** The superclass only calls the output. It has no other method.
 
 **Why do this?**
@@ -8,7 +17,6 @@
   * Open/Closed Principle.
   * Liskov Substitution Principle.
 
-## Strategy Pattern
 ```ruby
 
 # The strategy class
