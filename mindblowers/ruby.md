@@ -7,6 +7,52 @@
 * The observer handles the received events.
 * The subject has methods for adding more observers.
 
+```ruby
+# Ruby has this module in its standard library.
+# The module below is different.
+module Observable
+  def add_observer(observer)
+    observers << observer
+  end
+
+  def broadcast
+    observers.each do |observer|
+      observer.receive_notification(@notification_payload)
+    end
+  end
+end
+
+# See notes for Observable module
+module Observer
+  def receive_notification(notification_payload)
+    @notification_handler.call(notification_payload)
+  end
+end
+
+class SomeObservable
+  include Observable
+
+  def initialize(notification_payload)
+    @notification_payload = notification_payload
+  end
+
+  def do_some_event
+    # Notifying the observers should have zero dependency on
+    # who the observers are. Nor should it know whether observers exist.
+    # It should just notify.
+    broadcast
+  end
+end
+
+class SomeObserver
+  include Observer
+
+  def initialize(&notification_handler)
+    @notification_handler = notification_handler
+  end
+end
+```
+
 ## Strategy Pattern
 
 **Main characteristic:** The superclass only calls the output. It has no other method.
