@@ -1,5 +1,32 @@
 # Patterns
 
+## Composite
+
+```ruby
+class Task
+  # Whatever is common between composites and components.
+end
+
+module Composite
+  attr_reader: :children
+
+  def add_child
+  end
+
+  def remove_child
+  end
+end
+
+class CodeReview << Task
+  # Because it has child tasks
+  include Composite
+end
+
+# This is a child of CodeReview, but it is still a task
+class QA << Task
+end
+```
+
 ## Observer
 
 **Main characteristics:**
