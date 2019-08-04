@@ -245,7 +245,9 @@ end
 Api.run(some_args)
 ```
 
-```
+## Yield in RSPEC
+
+```ruby
 RSpec.describe "Making it yield arguments" do
   it "yields the provided args" do
     dbl = double
