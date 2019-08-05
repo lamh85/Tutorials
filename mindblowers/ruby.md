@@ -1,5 +1,25 @@
 # Patterns
 
+## External Iterator
+
+How is this different from internal iterator?
+* You don't pass in a proc
+* The client can interrupt the flow of the traversing because of above. But for internal ones, you just state the algorithm and let the iterator mindlessly run without question or interruption.
+
+```ruby
+class SomeIterator
+  def initialize(array)
+    @array = array
+  end
+
+  def push
+  end
+
+  def next_item
+  end
+end
+```
+
 ## Internal Iterator
 
 ```ruby
