@@ -1,5 +1,15 @@
 # Patterns
 
+## Command
+
+Operations to consider:
+* Undo - Is the operation really undo-able? What is required for making it possible? EG: store the file before deletion so that the deletion can be undone.
+* Redo - Same as above. Do you need to temporarily save the payload and event type?
+
+Other key notes
+* Can create a list of commands and run them.
+* Can undo the whole list by running all their "undo"s in reverse order.
+
 ## External Iterator
 
 How is this different from internal iterator?
