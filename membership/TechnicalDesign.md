@@ -6,15 +6,19 @@
 
 **Registraiton**
 
-USER visits APP. This is a selection of a product:
+USER visits APP.
+* Product's URL
+
+APP tells the USER about the product
+
+* Is the public available to the public?
 * Charging frequency
 * Price
   * Has discount?
     * Amount
     * Duration
 * Accessible features
-
-APP renders product information
+* Roll plan
 
 USER submits info
 * Credit card info
@@ -26,11 +30,31 @@ APP validates
 * password strength
 * credit card is approved by the card issuer and address validation rules
 
+**Change credit card**
+
+USER submits credit card info
+* credit card info
+
 **New Billing Period**
 
-TIME reaches a unix time
-
 STRIPE is notified of the time
+* billing period end
 
 STRIPE charges the credit card
 * price
+* credit card info
+
+STRIPE updates the billing period
+* current period's start
+* current period's end
+
+**Discount rolls into new plan**
+
+APP/STRIPE is notified of the time
+* billing period end
+
+APP checks eligibility
+* Is there a roll plan?
+* Is it the end of the discount?
+
+APP/STRIPE applies the new plan
