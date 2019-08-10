@@ -1,5 +1,11 @@
 # Membership - Technical Design
 
+## Super basic overview
+
+Membership is a contract where two parties trade goods:
+* The USER gives money
+* The APP allows access
+
 ## UML
 
 *NOTE* - Focus on the messages and tasks rather than determining the actors, objects, classes, etc.
@@ -58,3 +64,23 @@ APP checks eligibility
 * Is it the end of the discount?
 
 APP/STRIPE applies the new plan
+* Same process as registration
+
+**Updating a seller tier**
+
+APP is notified of the time
+* some buffer time before the billing period end
+
+APP determines the tier
+* User's Amazon orders
+
+APP updates the plan
+* Price
+* Name of the plan
+* Same process as registration
+
+**User accesses the app**
+
+USER requests to open a webpage
+* Find the user
+* Does the plan include access to that page?
