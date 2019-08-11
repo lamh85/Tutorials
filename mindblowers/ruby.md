@@ -1,5 +1,39 @@
 # Patterns
 
+## Adapter
+
+Why use it?
+* Client wants to use a service. But the service is dependent on something that doesn't exist.
+
+```ruby
+class Car
+  def add_engine(engine)
+  end
+
+  def start_engine
+    engine.start
+  end
+end
+
+class ToEngineConverter
+  def initialize(not_an_engine)
+    @not_an_engine = not_an_engine
+  end
+
+  def convert
+    # converts to engine
+  end
+
+  # Create this method because class Car needs it.
+  def start
+  end
+end
+
+engine = ToEngineConverter.new('not an engine')
+car = Car.new(engine)
+car.start_engine
+```
+
 ## Command
 
 Operations to consider:

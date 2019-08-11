@@ -1,10 +1,8 @@
 # Membership - Technical Design
 
-## UML
-
 *NOTE* - Focus on the messages and tasks rather than determining the actors, objects, classes, etc.
 
-**Registraiton**
+## Registration Flow
 
 USER visits APP. This is a selection of a product:
 * Charging frequency
@@ -26,11 +24,16 @@ APP validates
 * password strength
 * credit card is approved by the card issuer and address validation rules
 
-**New Billing Period**
+## New Billing Period Flow
 
 TIME reaches a unix time
 
 STRIPE is notified of the time
 
-STRIPE charges the credit card
-* price
+STRIPE ends the billing period
+
+STRIPE starts a new billing period
+* Sets the new billing end date
+  * Need to compute this date based on billing duration length
+* Charge USER
+  * Need price of the product
