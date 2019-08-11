@@ -1,5 +1,34 @@
 # Patterns
 
+## Adapter via Modification
+
+Modify an existing class:
+
+```ruby
+class String
+  def some_new_method
+  end
+
+  # Dangerous because this method already exists!
+  def empty?
+  end
+end
+```
+
+Modify only the instance
+```ruby
+john = Person.new
+
+class << john
+  def some_method
+  end
+end
+
+# Alternate syntax
+def john.another_method
+end
+```
+
 ## Adapter
 
 Why use it?
@@ -20,12 +49,10 @@ class ToEngineConverter
     @not_an_engine = not_an_engine
   end
 
-  def convert
-    # converts to engine
-  end
-
   # Create this method because class Car needs it.
   def start
+    # Do something to @not_an_engine
+    'starting engine...'
   end
 end
 
