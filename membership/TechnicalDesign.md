@@ -1,18 +1,28 @@
 # Membership - Technical Design
 
+## Super basic overview
+
+Membership is a contract where two parties trade goods:
+* The USER gives money
+* The APP allows access
+
 *NOTE* - Focus on the messages and tasks rather than determining the actors, objects, classes, etc.
 
 ## Registration Flow
 
-USER visits APP. This is a selection of a product:
+USER visits APP.
+* Product's URL
+
+APP tells the USER about the product
+
+* Is the public available to the public?
 * Charging frequency
 * Price
   * Has discount?
     * Amount
     * Duration
 * Accessible features
-
-APP renders product information
+* Roll plan
 
 USER submits info
 * Credit card info
@@ -24,16 +34,54 @@ APP validates
 * password strength
 * credit card is approved by the card issuer and address validation rules
 
-## New Billing Period Flow
+**Change credit card**
 
-TIME reaches a unix time
+USER submits credit card info
+* credit card info
+
+
+**New Billing Period**
 
 STRIPE is notified of the time
+* billing period end
 
 STRIPE ends the billing period
 
-STRIPE starts a new billing period
-* Sets the new billing end date
-  * Need to compute this date based on billing duration length
-* Charge USER
+STRIPE charges the credit card
   * Need price of the product
+  * credit card info
+
+STRIPE updates the billing period
+* current period's start
+* current period's end
+
+**Discount rolls into new plan**
+
+APP/STRIPE is notified of the time
+* billing period end
+
+APP checks eligibility
+* Is there a roll plan?
+* Is it the end of the discount?
+
+APP/STRIPE applies the new plan
+* Same process as registration
+
+**Updating a seller tier**
+
+APP is notified of the time
+* some buffer time before the billing period end
+
+APP determines the tier
+* User's Amazon orders
+
+APP updates the plan
+* Price
+* Name of the plan
+* Same process as registration
+
+**User accesses the app**
+
+USER requests to open a webpage
+* Find the user
+* Does the plan include access to that page?
