@@ -1,6 +1,6 @@
 # Membership - Technical Design
 
-## Super basic overview
+## **Super basic overview**
 
 Membership is a contract where two parties trade goods:
 * The USER gives money

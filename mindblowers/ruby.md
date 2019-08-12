@@ -1,5 +1,40 @@
 # Patterns
 
+## Virtual Proxy
+
+Do not create something expensive until absolutely necessary.
+
+EG: Don't do an API call to Stripe until needed.
+
+## Remote Proxy
+
+A middleman that deals with HTTP communication between the client and the target class.
+
+## Protection Proxy
+
+```ruby
+class ProductTrackerProxy
+  def initialize(tracker)
+    @tracker = tracker
+  end
+
+  def track_product
+    return unless has_access?
+    @tracker.track_product
+  end
+
+  private
+
+  def has_access?
+  end
+end
+
+class ProductTracker
+  def track_product
+  end
+end
+```
+
 ## Adapter via Modification
 
 Modify an existing class:
