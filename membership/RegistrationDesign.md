@@ -26,10 +26,10 @@ Client sends to back-end:
 [2] CREATE Stripe `customer`
 * belongs to `subscription`
 
-[3] UPDATE `user` **
+[3] UPDATE `user`
 * Persist `customer.id`
 
-[A] CREATE Stripe `subscription` **
+[A] CREATE Stripe `subscription`
 * Must execute after [2]
 * has `customer`
 * has `plan`
