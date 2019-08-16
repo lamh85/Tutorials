@@ -34,3 +34,6 @@ Client sends to back-end:
 * has `customer`
 * has `plan`
 * has `coupon`
+
+UPDATE - See this drawing:
+https://docs.google.com/document/d/1hbhTErbU3R9qi8iAUhKEmqwhxBYraplFRy3c7n9D3uo/edit
