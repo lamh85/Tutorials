@@ -37,3 +37,17 @@ Client sends to back-end:
 
 UPDATE - See this drawing:
 https://docs.google.com/document/d/1hbhTErbU3R9qi8iAUhKEmqwhxBYraplFRy3c7n9D3uo/edit
+
+## Describe What the Class is in Layman
+
+Why register? (The more base answers, the better)
+* To confirm that both parties have agreed.
+
+It is a list of operations.
+* Each operation records things.
+* Some operations need the previous one to finish.
+
+It must be able to roll back.
+* Must identify which stage caused the failure.
+
+It responds to an event.
