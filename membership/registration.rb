@@ -8,7 +8,28 @@
     # subscription
     # source
 
+# OOP Pattern: Decorator
+class MembershipEventDecorator
+  attr_accessor :user_request
+
+  def initialize(user_request)
+    @user_request = user_request
+  end
+
+  def decorate
+  end
+
+  private
+
+  def get_db_objects
+  end
+
+  def get_stripe_objects
+  end
+end
+
 # SUPER ABSTRACT - IE - Should rarely ever change
+# OOP Pattern: Command
 module TaskList
   class Registration < ::MembershipTaskList
     class << self
@@ -24,6 +45,7 @@ module TaskList
   end
 end
 
+# OOP Pattern: Command
 class TaskCoordinator
   attr_reader :event, :task_list
   attr_accessor :intertask_payload, :current_task, :task_result

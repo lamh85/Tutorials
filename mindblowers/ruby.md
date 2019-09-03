@@ -1,5 +1,23 @@
 # Patterns
 
+## Proxy without mirror every target's method
+
+```ruby
+def SomeProxy
+  def initialize(target_class)
+    @target_class = target_class
+  end
+
+  def method_missing(method, *args)
+    # This is better than writing a proxy for every @target_class' methods
+    @target_class.send(method, *args)
+  end
+end
+```
+
+**Pitfalls**
+* If wrapped around a standard-library class (EG: `String`), then you `method_missing` will intercept common methods like `.to_s`.
+
 ## Virtual Proxy
 
 Do not create something expensive until absolutely necessary.
