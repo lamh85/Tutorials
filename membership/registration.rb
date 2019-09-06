@@ -29,7 +29,6 @@ class MembershipEventDecorator
 end
 
 # SUPER ABSTRACT - IE - Should rarely ever change
-# OOP Pattern: Command
 module TaskList
   class Registration < ::MembershipTaskList
     class << self
@@ -45,7 +44,7 @@ module TaskList
   end
 end
 
-# OOP Pattern: Command
+# OOP Pattern: Composite and Command
 class TaskCoordinator
   attr_reader :event, :task_list
   attr_accessor :intertask_payload, :current_task, :task_result
@@ -93,4 +92,20 @@ class TaskCoordinator
 
   def report_sentry
   end
+end
+
+module MembershipPersistanceTasks
+=begin
+  CreateStripeCustomer
+  UpdateStripeCustomer
+  CreateUser
+  UpdateUser
+  CreateStripeSubscription
+  UpdateStripeSubscription
+  CreateMembership
+  UpdateMembership
+  SendMetrics
+  Avalara
+  CreateStripeMetadata
+=end
 end

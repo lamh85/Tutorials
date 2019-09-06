@@ -47,7 +47,24 @@ It is a list of operations.
 * Each operation records things.
 * Some operations need the previous one to finish.
 
-It must be able to roll back.
+It must be able to roll back (to some extent).
 * Must identify which stage caused the failure.
 
 It responds to an event.
+
+Keeps the state updated so that Stripe and the app can do its job (just like many other membership systems).
+
+## What if we model the registration based on a tangible metaphor?
+
+Registration = confirmation of a contract
+
+What is a contract?
+* Two parties
+* Both parties trade
+
+What is the contract in this context?
+* User gives:
+  * Money every period
+  * Variables: price, period size
+* App gives:
+  * Access
