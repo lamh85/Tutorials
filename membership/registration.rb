@@ -96,16 +96,21 @@ end
 
 module MembershipPersistanceTasks
 =begin
-  CreateStripeCustomer
-  UpdateStripeCustomer
-  CreateUser
-  UpdateUser
-  CreateStripeSubscription
-  UpdateStripeSubscription
-  CreateMembership
-  UpdateMembership
-  SendMetrics
+  # Database:
+  user
+  membership
+  invoice
+
+  # Stripe
+  customer
+  subscription
+
+  # Third party integrations
+  marketing metrics
   Avalara
-  CreateStripeMetadata
+  Google Analytics
+
+  # Misc
+  metadata
 =end
 end
