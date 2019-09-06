@@ -24,31 +24,6 @@ Membership is a contract where two parties trade goods:
   * User requested cancellation
 * Membership Expires
 
-**A-HA MOMENT** - An event can trigger another event.
-* But the second event should be sent from the web app or Stripe.
-* EG:
-  * Event 1: New billing period starts
-  * Event 2: Change Seller plan tier
-  * Event 3: Stripe emits event: `subscription` updated.
-
-## General flow for event handling
-
-EXAMPLES - The general flow should satisfy them.
-* USER registers
-* STRIPE starts new billing period
-* APP changes Seller tier (This is both reactive and independent)
-* USER requests cancellation
-
-CHALLENGE - Wherever possible, use duck typing instead of conditional
-
-FLOW
-* Event happens
-* `StripeEvent.configure` or some class chooses the correct handler
-* Run handler
-  * Update Membership
-  * Update Stripe object
-  * Update Metrics
-
 ## Event-Handling Flows
 
 USER visits APP.
