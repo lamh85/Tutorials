@@ -20,6 +20,8 @@ def do_something(user)
 end
 ```
 
+**Anticipate now or wait later?**
+
 **Compare with real-life relationships** - For example:
 * has a/some (contains)
 * is a (sub-type)
