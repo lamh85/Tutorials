@@ -1,5 +1,76 @@
 # Patterns
 
+## Singleton
+
+```ruby
+def SomeClass
+  # Prevent instantiation
+  private_class_method :new
+end
+```
+
+Easy conversion to Singleton
+```ruby
+def SomeClass
+  include Singleton
+end
+```
+
+## Decorator
+
+**Main Feature**
+* A decorator's output can be re-used for a different decorator.
+* Therefore, all decorators input and outplut classes should be the same.
+
+```ruby
+class Decorator
+  def call(content)
+    new(content).decorate
+  end
+
+  def initialize(content)
+    @content = content
+  end
+
+  def decorate
+    raise 'Expected a "decorate" method, but found none.'
+  end
+end
+
+class TimeStamper < Decorator
+  def decorate
+  end
+end
+
+class CaseFixer < Decorator
+  def decorate
+  end
+end
+
+# Must be able to use the above decorators in any order.
+```
+
+## Deocrators Replace This
+
+```ruby
+class Decorator
+  def initialize(content)
+    @content = content
+  end
+
+  # All these methods are accessible from outsie.
+
+  def print_with_timestamps
+  end
+
+  def print_with_all_caps
+  end
+
+  def print_in_xml
+  end
+end
+```
+
 ## Proxy without mirror every target's method
 
 ```ruby
