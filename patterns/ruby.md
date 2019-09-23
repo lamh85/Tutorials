@@ -16,6 +16,13 @@ def SomeClass
 end
 ```
 
+Can use modules instead of classes to create singleton because modules can't be instantiate.
+
+BUT, you can clone it, then re-define it:
+```ruby
+SomeModule.clone
+```
+
 ## Decorator
 
 **Main Feature**
