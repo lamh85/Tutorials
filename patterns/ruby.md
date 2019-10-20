@@ -1,6 +1,4 @@
-# Patterns
-
-## Singleton
+# Singleton
 
 ```ruby
 def SomeClass
@@ -23,7 +21,7 @@ BUT, you can clone it, then re-define it:
 SomeModule.clone
 ```
 
-## Decorator
+# Decorator
 
 **Main Feature**
 * A decorator's output can be re-used for a different decorator.
@@ -57,7 +55,7 @@ end
 # Must be able to use the above decorators in any order.
 ```
 
-## Deocrators Replace This
+# Deocrators Replace This
 
 ```ruby
 class Decorator
@@ -78,7 +76,7 @@ class Decorator
 end
 ```
 
-## Proxy without mirror every target's method
+# Proxy without mirror every target's method
 
 ```ruby
 def SomeProxy
@@ -96,17 +94,17 @@ end
 **Pitfalls**
 * If wrapped around a standard-library class (EG: `String`), then you `method_missing` will intercept common methods like `.to_s`.
 
-## Virtual Proxy
+# Virtual Proxy
 
 Do not create something expensive until absolutely necessary.
 
 EG: Don't do an API call to Stripe until needed.
 
-## Remote Proxy
+# Remote Proxy
 
 A middleman that deals with HTTP communication between the client and the target class.
 
-## Protection Proxy
+# Protection Proxy
 
 ```ruby
 class ProductTrackerProxy
@@ -131,7 +129,7 @@ class ProductTracker
 end
 ```
 
-## Adapter via Modification
+# Adapter via Modification
 
 Modify an existing class:
 
@@ -160,7 +158,7 @@ def john.another_method
 end
 ```
 
-## Adapter
+# Adapter
 
 Why use it?
 * Client wants to use a service. But the service is dependent on something that doesn't exist.
@@ -192,7 +190,7 @@ car = Car.new(engine)
 car.start_engine
 ```
 
-## Command
+# Command
 
 Operations to consider:
 * Undo - Is the operation really undo-able? What is required for making it possible? EG: store the file before deletion so that the deletion can be undone.
@@ -202,7 +200,7 @@ Other key notes
 * Can create a list of commands and run them.
 * Can undo the whole list by running all their "undo"s in reverse order.
 
-## External Iterator
+# External Iterator
 
 How is this different from internal iterator?
 * You don't pass in a proc
@@ -222,7 +220,7 @@ class SomeIterator
 end
 ```
 
-## Internal Iterator
+# Internal Iterator
 
 ```ruby
 def for_each_element(array)
@@ -237,7 +235,7 @@ a = [10, 20, 30]
 for_each_element(a) {|element| puts("The element is #{element}")}
 ```
 
-## Composite
+# Composite
 
 ```ruby
 class Task
@@ -264,7 +262,7 @@ class QA << Task
 end
 ```
 
-## Observer
+# Observer
 
 **Main characteristics:**
 * The subject (the observed) just emits events. But doesn't care who the observers are.
@@ -317,7 +315,7 @@ class SomeObserver
 end
 ```
 
-## Strategy Pattern
+# Strategy Pattern
 
 **Main characteristic:** The superclass only calls the output. It has no other method.
 
@@ -371,7 +369,7 @@ mc = MaineCoon.new
 mc.meow
 ```
 
-## Substitute Strategy Option with a Proc
+# Substitute Strategy Option with a Proc
 
 This is only effective if the strategy object can fit inside one method. If so, then store it in side a proc.
 
@@ -397,7 +395,7 @@ some_format = lambda do |context|
 end
 ```
 
-## Include vs Extend
+# Include vs Extend
 http://www.railstips.org/blog/archives/2009/05/15/include-vs-extend-in-ruby/
 ```ruby
 module IncludeMe
@@ -423,7 +421,7 @@ end
 class Child < Parent
 end
 ```
-## Hooks
+# Hooks
 ```ruby
 class Ancestor
   def total
@@ -453,7 +451,7 @@ end
 ```
 
 
-## Composition with Duck Typing
+# Composition with Duck Typing
 ```ruby
 class Hobby
   attr_reader :name
@@ -491,7 +489,7 @@ some_guy = Person(name: 'John Doe', hobbies: strange_hobbies)
 ```
 
 
-## Self Instantiation
+# Self Instantiation
 
 ```ruby
 class Api
@@ -509,7 +507,7 @@ end
 Api.run(some_args)
 ```
 
-## Yield in RSPEC
+# Yield in RSPEC
 
 ```ruby
 RSpec.describe "Making it yield arguments" do
@@ -528,7 +526,7 @@ end
 ```
 
 
-## Chain of Responsibility
+# Chain of Responsibility
 https://medium.com/kkempin/chain-of-responsibility-design-pattern-in-ruby-e0b756d4bb3b
 
 ```ruby
@@ -591,38 +589,4 @@ policy = LogsControllerPolicy.new(
 )
 
 puts policy.check_access(ProfileController, user)
-```
-
-
-# Statements
-## Use conditional assignment instead of conditional
-```ruby
-first_resort = {}
-next_resort = {something: 'value'}
-
-# All of the following produce the same result
-
-result = first_resort[:something]
-result ||= next_resort[:something]
-
-result = next_resort[:something]
-result = first_resort[:something] if first_resort[:something]
-
-result = first_resort[:something] || next_resort[:something]
-```
-## Square brakcets is a method
-```ruby
-hash = { hello: "world" }
-hash.try([], :hello)
-```
-## Delegate missing methods
-```ruby
-class Person
-  def first_name
-  end
-
-  def method_missing(method_name, *args, &block)
-    # What to do if the requester calls an undefined method of Person.
-  end
-end
 ```
