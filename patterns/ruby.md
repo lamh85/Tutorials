@@ -1,3 +1,70 @@
+# Membership Task Runner
+
+This is a pattern that I created at work.
+
+```ruby
+module Memberships
+  module Persisters
+    class InAppResearchPurchase
+      attr_reader :user,
+                  :current_product,
+                  :new_product
+
+      attr_accessor :response_message,
+                    :response_code
+
+      def run
+        new(params).run_tasks
+      end
+
+      def initialize(params)
+      end
+
+      private
+
+      def run_tasks
+        error_response = {
+          response_message: response_message,
+          response_code: response_code
+        }
+
+        return error_response if
+          !new_product_exists? ||
+          !sift_authorized? ||
+          !valid_product_change?
+
+        persist
+        track_metrics
+
+        { response_code: 200 }
+      end
+
+      def new_product_exists?
+        return true if found
+
+        @response_message = "Product not found"
+        @response_code = 404
+        return false
+      end
+
+      def sift_authorized?
+        # same pattern as new_product_exists?
+      end
+
+      def valid_product_change?
+        # same pattern as new_product_exists?
+      end
+
+      def persist
+      end
+
+      def track_metrics
+      end
+    end
+  end
+end
+```
+
 # Singleton
 
 ```ruby
@@ -93,6 +160,7 @@ end
 
 **Pitfalls**
 * If wrapped around a standard-library class (EG: `String`), then you `method_missing` will intercept common methods like `.to_s`.
+* This does NOT update `.respond_to?` method. If you run `some_proxy.respond_to?`, it will return false.
 
 # Virtual Proxy
 

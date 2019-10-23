@@ -1,3 +1,12 @@
+# `grep` Block
+
+```ruby
+some_array  = []
+some_array.grep(/some_pattern/) do
+  do_something_with $1
+end
+```
+
 # Low-level OOP
 
 ```ruby
