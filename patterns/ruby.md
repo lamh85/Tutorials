@@ -1,3 +1,53 @@
+# Ghost Method
+
+## Infinit Loop
+
+```ruby
+class RandomNumberGenerator
+  def method_missing(name, *args)
+    3.times do
+      number = rand(10)
+    end
+    # Infinite loop starts below
+    puts "The number is #{number}"
+  end
+end
+```
+
+### Cause
+1. The developer thought that `puts` would call the `number` that was defined in the loop. But he forgot that `puts`' line of code has no access to that variable.
+2. The variable is undefined. Therefore, Ruby looks for the method `number` in the class.
+3. Since Ruby cannot find the method, it calls `method_missing`.
+4. `method_missing` runs another loop, which is steps 1 to 3 above.
+
+### Main Lessons
+* Using only `method_missing` means that you want all method names to be valid. But is that what you really want? Sometimes you really do want a `NoMethodError`.
+* Always reference `BasicObject`'s `method_missing` as a fallback. Without it, your class will define all method names as valid.
+
+## Name Clash
+
+```ruby
+class CustomString < String
+  def method_missing
+  end
+end
+
+# calls String#to_s instead of CustomString#to_s
+CustomString.new.to_s 
+```
+
+### Solution: Inherit from "blank slate"
+
+```ruby
+class CustomString < BasicObject
+  def method_missing
+  end
+end
+
+# calls CustomString#to_s
+CustomString.new.to_s
+```
+
 # Membership Task Runner
 
 This is a pattern that I created at work.
