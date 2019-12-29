@@ -13,7 +13,7 @@ class Hover extends React.Component {
 }
 
 <Hover render={(hovering) =>
-  <DailyChart hovering={hovering}>
+  <DailyChart hovering={hovering} />
 }>
 
 function DailyChart (props) {
