@@ -1,3 +1,5 @@
+# Recommended While Rearching
+
 Do you need to know algorithms for frontend development?
 https://www.reddit.com/r/Frontend/comments/3euhau/do_you_need_to_know_algorithms_for_frontend/
   Best response:
@@ -5,14 +7,17 @@ https://www.reddit.com/r/Frontend/comments/3euhau/do_you_need_to_know_algorithms
 
 https://towardsdatascience.com/top-algorithms-and-data-structures-you-really-need-to-know-ab9a2a91c7b5
 
-Topics suggested by Facebook:
+# Recommended by Facebook
+
 https://mail.google.com/mail/u/0/#search/adriana/FMfcgxwBVWJSSqgZhZJBFRKdTVFLMWpq
+
 Algorithms:
 - Merge Sort
 - Quick Sort
 - Breadth-first search
 - Depth-first search
 - Binary Search
+
 Data Structures:
 - Arrays/ArrayLists
 - Hash Tables
@@ -20,11 +25,15 @@ Data Structures:
 - Graphs
 - Stacks/Queues
 - Heaps
+
 Concepts:
 - Big O
 - Recursion
 - Memoization/Dynamic Programming
+
 Design patterns
+
+# Big O
 
 Big O Notation
   Javascript examples
