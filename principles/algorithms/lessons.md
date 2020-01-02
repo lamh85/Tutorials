@@ -2,7 +2,7 @@
 
 Do you need to know algorithms for frontend development?
 https://www.reddit.com/r/Frontend/comments/3euhau/do_you_need_to_know_algorithms_for_frontend/
-  Best response:
+* Best response:
   https://www.reddit.com/r/Frontend/comments/3euhau/do_you_need_to_know_algorithms_for_frontend/ctikdsp
 
 https://towardsdatascience.com/top-algorithms-and-data-structures-you-really-need-to-know-ab9a2a91c7b5
@@ -35,13 +35,14 @@ Design patterns
 
 # Big O
 
-Big O Notation
-  Javascript examples
-  https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b
-  Ruby examples
-  https://blog.honeybadger.io/a-rubyist-s-guide-to-big-o-notation/
+Javascript examples
+https://medium.com/cesars-tech-insights/big-o-notation-javascript-25c79f50b19b
 
-How to read the notation:
+Ruby examples
+https://blog.honeybadger.io/a-rubyist-s-guide-to-big-o-notation/
+
+## How to read the notation
+
 For example: O(1)
 The "O" is just the name of the function. EG: "O of 1".
 The evaluation of the parenthesis is the number of iterations.
@@ -49,16 +50,19 @@ In the above example, the result will always be one iteration.
 
 Goal: minimize the number of iterations.
 
-What is a logorithm?
-It solves for the mystery exponent, with the default base of 10.
-EG: log100 = 2
-Since the base is not defined, the base is 10. The answer is 2 because 10 requires that exponent to produce 100.
-EG: "base 2 logorithm of 8" = 3
-Because 2 must be cubed to become 8.
-The above is equivalent of dividing two base-10 logorithms: log8 / log2 = 3
-
 N = number of elements.
-EG: O(N) = number of iterations grows linearly with the number of elements
+* EG: O(N) = number of iterations grows linearly with the number of elements
+
+## What is a logorithm?
+
+It solves for the mystery exponent, with the default base of 10.
+
+EG: log100 = 2
+* Since the base is not defined, the base is 10. The answer is 2 because 10 requires that exponent to produce 100.
+
+EG: "base 2 logorithm of 8" = 3
+* Because 2 must be cubed to become 8.
+The above is equivalent of dividing two base-10 logorithms: log8 / log2 = 3
 
 Binary Trees (big takeaways)
 ============
@@ -71,6 +75,7 @@ An optimized tree (AVL tree) creates the best Big O performance for search: O * 
 Pivoting:
 ---------
 
+```
   10
 /     \
 1     20
@@ -78,6 +83,7 @@ Pivoting:
       15    30
               \
                 40
+```
 
 1. Find the node that would create the best balance if it becomes the new root. "20" is the answer: 2 on the left (1 and 10), 2 on the right (30 and 40), and 1 stragler (15).
 2. The straggler is re-inserted. The result: 15 becomes the right child of 10.
@@ -88,3 +94,47 @@ Graphs
 ======
 
 https://medium.freecodecamp.org/a-gentle-introduction-to-data-structures-how-graphs-work-a223d9ef8837
+
+Finding the shortest distance
+* https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e
+
+Lessons from Dijsktra strategy:
+* The more secondary data you store, the easier is the algorithm. The Dijkstra method stored this additional data: the best path for the node, the previous node in the respective best path.
+* A large discovery could produce smaller discoveries.
+* Create a `stack` data structure.
+
+Lessons from the data structure:
+* The diagram does not have to be proportional.
+* The diagram's main purpose is to understand which nodes are related.
+* Any data structure can be used to describe relationship because all data structures require nodes and edges. EG: 2 neighbouring array items are related.
+
+## Dijkstra Technical Design
+
+Create table of three columns:
+
+|Node | Shortest from A | Previous Node|
+------|-----------------|--------------|
+|A | Infinity | null |
+|B | Infinity | null |
+|etc...|
+
+Create a list of unvisited nodes:
+```javascript
+const unvisitedMaster = [A, B, C, D, E]
+```
+Iterate:
+```javascript
+const startingNode = unvisitedMaster[0]
+
+const unvisitedNeighbours = f(startingNode)
+
+const closestNeighbour = f(unvisitedNeighbours)
+
+const distance = f(closestNeighbour)
+
+if (distance < shortestFromA(closestNeighbour)) {
+  updateShortestFromA(distance, startingNode)
+}
+
+deleteFromUnvisitedMaster(closestNeighbour)
+```
