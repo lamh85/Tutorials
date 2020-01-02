@@ -103,6 +103,9 @@ Lessons from Dijsktra strategy:
 * A large discovery could produce smaller discoveries.
 * Create a `stack` data structure.
 
+Problems that Dijkstra solve:
+* O(N^M)
+
 Lessons from the data structure:
 * The diagram does not have to be proportional.
 * The diagram's main purpose is to understand which nodes are related.
