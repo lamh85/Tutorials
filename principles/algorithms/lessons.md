@@ -127,17 +127,18 @@ const unvisitedMaster = [A, B, C, D, E]
 ```
 Iterate:
 ```javascript
-const startingNode = unvisitedMaster[0]
+// Start with default node
+const currentNode = unvisitedMaster[0]
 
-const unvisitedNeighbours = f(startingNode)
+// Identify the neighbours
+const neighbours = getNeighbours(currentNode)
 
-const closestNeighbour = f(unvisitedNeighbours)
+// Update the shortest path for all the neighbours
+batchUpdateShortest(neighbours, currentNode)
 
-const distance = f(closestNeighbour)
+// Remove the current node from the list of unvisited nodes
+deleteFromUnvisitedMaster(currentNode)
 
-if (distance < shortestFromA(closestNeighbour)) {
-  updateShortestFromA(distance, startingNode)
-}
-
-deleteFromUnvisitedMaster(closestNeighbour)
+// Move the cursor to the next node
+const currentNode = getClosestNeighbour(currentNode)
 ```
