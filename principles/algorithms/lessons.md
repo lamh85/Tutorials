@@ -142,3 +142,18 @@ deleteFromUnvisitedMaster(currentNode)
 // Move the cursor to the next node
 const currentNode = getClosestNeighbour(currentNode)
 ```
+
+# Heap
+
+https://brilliant.org/wiki/heaps/
+
+A binay tree where the root is either minimum or maximum.
+
+In a maximum, every parent is greater than its children.
+
+How to remove a node:
+* http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/heap-delete.html
+
+Uses:
+* Easy to find the minimum or maximum.
+* Easy to find the 2nd smallest or 2nd largest: just traverse down the tree.
