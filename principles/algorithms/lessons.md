@@ -1,4 +1,4 @@
-# Recommended While Rearching
+# Recommended by Others
 
 Do you need to know algorithms for frontend development?
 https://www.reddit.com/r/Frontend/comments/3euhau/do_you_need_to_know_algorithms_for_frontend/
@@ -6,6 +6,9 @@ https://www.reddit.com/r/Frontend/comments/3euhau/do_you_need_to_know_algorithms
   https://www.reddit.com/r/Frontend/comments/3euhau/do_you_need_to_know_algorithms_for_frontend/ctikdsp
 
 https://towardsdatascience.com/top-algorithms-and-data-structures-you-really-need-to-know-ab9a2a91c7b5
+
+Paradigms:
+* https://softwareengineering.stackexchange.com/a/309218
 
 # Recommended by Facebook
 
