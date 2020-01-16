@@ -7,7 +7,10 @@ https://www.reddit.com/r/Frontend/comments/3euhau/do_you_need_to_know_algorithms
 
 https://towardsdatascience.com/top-algorithms-and-data-structures-you-really-need-to-know-ab9a2a91c7b5
 
-Paradigms:
+Why learn about algorithms?
+* https://medium.com/@felipernb/algorithms-data-structures-and-web-development-7772e088f1d3
+
+Algorithmic paradigms
 * https://softwareengineering.stackexchange.com/a/309218
 
 # Recommended by Facebook
@@ -145,3 +148,45 @@ deleteFromUnvisitedMaster(currentNode)
 // Move the cursor to the next node
 const currentNode = getClosestNeighbour(currentNode)
 ```
+
+# Heap
+
+https://brilliant.org/wiki/heaps/
+
+A binay tree where the root is either minimum or maximum.
+
+In a maximum, every parent is greater than its children.
+
+How to remove a node:
+* http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/heap-delete.html
+
+Uses:
+* Easy to find the minimum or maximum.
+* Easy to find the 2nd smallest or 2nd largest: just traverse down the tree.
+
+# Sorting
+
+Animated comparison
+* https://miro.medium.com/max/899/1*bPpvELo9_QqQsDz7CSbwXQ.gif
+
+# Quick Sort
+https://brilliant.org/wiki/sorting-algorithms/
+
+Create a pivot point in an array
+
+```
+7 5 2 3 6 8 1
+      P
+```
+
+Then ensure that the left sub-array is less than the pivot, and the right sub-array is more than the pivot. Do this one by one.
+
+```
+1 5 2 3 6 8 7
+*     P     * <= These numbers swapped
+```
+
+# Breadth First Search
+
+Graphical demo
+https://www.hackerearth.com/ja/practice/algorithms/graphs/breadth-first-search/tutorial/
