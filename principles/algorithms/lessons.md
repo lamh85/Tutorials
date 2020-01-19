@@ -18,8 +18,8 @@ Algorithmic paradigms
 https://mail.google.com/mail/u/0/#search/adriana/FMfcgxwBVWJSSqgZhZJBFRKdTVFLMWpq
 
 Algorithms:
-- Merge Sort
-- Quick Sort
+- [x] Merge Sort
+- [x] Quick Sort
 - Breadth-first search
 - Depth-first search
 - Binary Search
@@ -27,15 +27,15 @@ Algorithms:
 Data Structures:
 - Arrays/ArrayLists
 - Hash Tables
-- Trees - EG: binary trees
-- Graphs
+- [x] Trees - EG: binary trees
+- [x] Graphs
 - Stacks/Queues
-- Heaps
+- [x] Heaps
 
 Concepts:
-- Big O
+- [x] Big O
 - Recursion
-- Memoization/Dynamic Programming
+- [x] Memoization/Dynamic Programming
 
 Design patterns
 
