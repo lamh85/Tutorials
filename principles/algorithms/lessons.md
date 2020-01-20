@@ -190,3 +190,5 @@ Then ensure that the left sub-array is less than the pivot, and the right sub-ar
 
 Graphical demo
 https://www.hackerearth.com/ja/practice/algorithms/graphs/breadth-first-search/tutorial/
+
+Given a graph, traverse one layer, and then proceed to the next layer.
