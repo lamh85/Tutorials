@@ -20,7 +20,7 @@ https://mail.google.com/mail/u/0/#search/adriana/FMfcgxwBVWJSSqgZhZJBFRKdTVFLMWp
 Algorithms:
 - [x] Merge Sort
 - [x] Quick Sort
-- Breadth-first search
+- [x] Breadth-first search
 - Depth-first search
 - Binary Search
 
@@ -192,3 +192,14 @@ Graphical demo
 https://www.hackerearth.com/ja/practice/algorithms/graphs/breadth-first-search/tutorial/
 
 Given a graph, traverse one layer, and then proceed to the next layer.
+
+Applications:
+* Any situation in which the immediate neighbours must be known first before going too "deep". Examples:
+  * In a geographical map, it's more important to know the neighbouring points of interest before knowing the more distant places.
+  * Web crawlers for search engines.
+* https://www.tutorialspoint.com/applications-of-dfs-and-bfs-in-data-structures
+* https://medium.com/edureka/breadth-first-search-algorithm-17d2c72f0eaa
+
+# Red Black Tree
+
+https://medium.com/basecs/painting-nodes-black-with-red-black-trees-60eacb2be9a5
