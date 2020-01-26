@@ -19,3 +19,72 @@ var addVariable = function addFunction(param1, param2) {
 // Can call via expression
 var result = addVariable(num1, num2); // ==> 40
 ```
+# OOP
+
+How _prototype_ OOP is different from _classical_ OOP:
+* You can create a long change of copies.
+* Any "instance" can itself be copied into another instance.
+* Thus a chain.
+
+## The Keyword `new`
+* https://codeburst.io/javascript-for-beginners-the-new-operator-cee35beb669e
+* https://medium.com/javascript-in-plain-english/proto-vs-prototype-in-js-140b9b9c8cd5
+
+```javascript
+function Student(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+var first = new Student('John', 26);
+
+first.__proto__.constructor.toString()
+/*
+RETURNS:
+
+"function Student(name, age) {
+  this.name = name;
+  this.age = age;
+}"
+
+.__proto__ means the origin of the instance
+*/
+
+Student.prototype == first.__proto__
+// => true
+// The two properties are aliases. The only difference is that one is used for the class, and the other is for the instance.
+```
+
+## `class` is Syntax Sugar
+
+https://www.freecodecamp.org/news/demystifying-javascripts-new-keyword-874df126184c/
+
+```javascript
+class User {
+  constructor(name) {
+    this.name = name
+  }
+}
+
+const john = new User('John')
+
+john.__proto__.constructor
+// => [Function: User]
+```
+
+## DOM API as an example
+
+```javascript
+div = document.querySelector('div')
+
+div.__proto__.constructor
+// => ƒ HTMLDivElement() { [native code] }
+```
+
+# `typeof` is unreliable
+
+https://2ality.com/2017/08/type-right.html
+
+# The function `requestAnimationFrame`
+
+https://stackoverflow.com/questions/38709923/why-is-requestanimationframe-better-than-setinterval-or-settimeout
