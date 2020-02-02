@@ -23,8 +23,10 @@ var result = addVariable(num1, num2); // ==> 40
 
 How _prototype_ OOP is different from _classical_ OOP:
 * You can create a long change of copies.
-* Any "instance" can itself be copied into another instance.
+* Any copy itself can be a prototype for another copy.
 * Thus a chain.
+
+* Creating new copies is NOT cloning.
 
 ## The Keyword `new`
 * https://codeburst.io/javascript-for-beginners-the-new-operator-cee35beb669e
@@ -84,6 +86,29 @@ div.__proto__.constructor
 # `typeof` is unreliable
 
 https://2ality.com/2017/08/type-right.html
+
+The possible outputs for `typeof`: https://www.w3resource.com/javascript/operators/typeof.php
+
+The Javascript **primitives**: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
+
+Combined together
+
+`typeof` | Primitive or Object
+---------|----------
+`object`|(not a primitive)<br/>Objects, Arrays, `null`
+`boolean`|Boolean
+`function`|(not a primitive)<br/>Function
+`number`|Number
+`bigint`|BigInt
+`string`|String
+`undefined`|Undefined
+`symbol`|Symbol
+
+# Background Workers
+
+Use messaging to communicate
+* https://www.html5rocks.com/en/tutorials/workers/basics/
+* https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
 # The function `requestAnimationFrame`
 
