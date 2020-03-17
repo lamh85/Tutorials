@@ -1,3 +1,74 @@
+# Domain Specific Language
+
+Here is a script that depends on a fictional DSL.
+
+```ruby
+# Filename: my_journey.nav
+
+start(0, 0)
+move("up", 3)
+move("right", 3)
+get_position
+```
+
+
+Here is the DSL that takes the above script as an input.
+
+```ruby
+class GridNavigator
+  attr_accessor :position
+
+  def self.call(dsl_input)
+    new(dsl_input).run_dsl_input
+  end
+
+  def initialize(dsl_input)
+    @dsl_input = dsl_input
+    @position = { 0, 0 }
+  end
+
+  def run_dsl_input
+    eval(dsl_input)
+  end
+
+  private
+
+  def start(x:, y:)
+    @position = { x: x, y: y }
+  end
+
+  def get_position
+    @position
+  end
+
+  def move(direction:, increment:)
+    if ['up', 'right'].include? direction
+      normalized_size = increment.abs
+    else
+      normalized_size = (increment.abs * -1)
+    end
+
+    if ['up', 'down'].include? direction
+      change_position(0, normalized_size)
+    else
+      change_position(normalized_size, 0)
+    end
+  end
+
+  def change_position(increment_x:, increment_y:)
+    @position = {
+      x: @position[:x] + increment_x,
+      y: @position[:y] + increment_y
+    }
+  end
+end
+```
+
+Run the script that uses the DSL:
+```ruby
+GridNavigator.call(File.read('my_journey.nav'))
+```
+
 # Ghost Method
 
 ## Infinit Loop
